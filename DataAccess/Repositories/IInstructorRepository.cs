@@ -1,14 +1,10 @@
-﻿using DataAccess.Connection;
+﻿using Core.Repositories;
 using Entity.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
     public interface IInstructorRepository:IRepository<Instructor>
     {
+        Task<bool> ExistsByNationalIdAsync(string nationalId);
     }
 }

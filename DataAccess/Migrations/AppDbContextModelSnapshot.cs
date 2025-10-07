@@ -197,17 +197,21 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entity.Entities.Application", b =>
                 {
-                    b.HasOne("Entity.Entities.Applicant", null)
+                    b.HasOne("Entity.Entities.Applicant", "Applicant")
                         .WithMany()
                         .HasForeignKey("ApplicantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entity.Entities.Bootcamp", null)
+                    b.HasOne("Entity.Entities.Bootcamp", "Bootcamp")
                         .WithMany()
                         .HasForeignKey("BootcampId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Applicant");
+
+                    b.Navigation("Bootcamp");
                 });
 
             modelBuilder.Entity("Entity.Entities.Blacklist", b =>
@@ -223,11 +227,13 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entity.Entities.Bootcamp", b =>
                 {
-                    b.HasOne("Entity.Entities.Instructor", null)
+                    b.HasOne("Entity.Entities.Instructor", "Instructor")
                         .WithMany()
                         .HasForeignKey("InstructorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Instructor");
                 });
 #pragma warning restore 612, 618
         }

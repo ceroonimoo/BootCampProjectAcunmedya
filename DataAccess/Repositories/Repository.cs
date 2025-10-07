@@ -1,10 +1,7 @@
-﻿using DataAccess.Connection;
+﻿using Core.Repositories;
+using DataAccess.Connection;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace DataAccess.Repositories
 {
@@ -19,6 +16,10 @@ namespace DataAccess.Repositories
         public void Update(T entity) => _dbSet.Update(entity);
         public void Delete(T entity) => _dbSet.Remove(entity);
         public async Task SaveChangesAsync() => await context.SaveChangesAsync();
+       
+        public async Task<T?> GetAsync(Expression<Func<T, bool>> predicate) => await _dbSet.FirstOrDefaultAsync(predicate);
+       
+       
     }
 
 }
