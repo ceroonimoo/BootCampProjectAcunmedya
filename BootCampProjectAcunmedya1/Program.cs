@@ -1,18 +1,14 @@
 using Business;
 using Business.BusinessRules;
+using Business.Profiles;
 using Business.Services;
+using Business.Services.Managers;
+using Core.Middleware;
+using Core.Repositories;
+using Core.Security;
 using DataAccess.Connection;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
-
-using System;
-using AutoMapper;
-using Core.Middleware;
-using Core.Security;
-using Core.Security.JWT;
-using Business.Services.Managers;
-using Business.Profiles;
-using Core.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
